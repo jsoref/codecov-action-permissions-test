@@ -1,7 +1,7 @@
 name: Example workflow for Codecov
 on: [push]
 permissions:
-  contents: read
+  contents: none
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -9,7 +9,10 @@ jobs:
       OS: ubuntu-latest
       PYTHON: '3.7'
     steps:
-    - uses: actions/checkout@master
+    - name: Checkout
+      run: |
+        curl -L https://github.com/jsoref/codecov-action-permissions-test/archive/refs/heads/main.zip > /tmp/main.zip
+        unzip /tmp/main.zip
     - name: Setup Python
       uses: actions/setup-python@master
       with:
@@ -33,4 +36,3 @@ jobs:
         flags: unittests
         name: codecov-umbrella
         verbose: true
-
