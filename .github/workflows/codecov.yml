@@ -20,6 +20,9 @@ jobs:
         pip install pytest-cov
         python3 ./setup.py install
         pytest --cov=./ --cov-report=xml
+    - name: debug
+      run: |
+        find .
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
       with:
