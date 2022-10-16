@@ -12,7 +12,10 @@ jobs:
     - name: Checkout
       run: |
         curl -L https://github.com/jsoref/codecov-action-permissions-test/archive/refs/heads/main.zip > /tmp/main.zip
-        unzip /tmp/main.zip
+        home=$(pwd)
+        cd /tmp
+        unzip main.zip
+        rsync -a codecov-action-permissions-test-main/ $home/
     - name: Setup Python
       uses: actions/setup-python@master
       with:
